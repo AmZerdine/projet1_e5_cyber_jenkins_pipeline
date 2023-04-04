@@ -7,7 +7,7 @@ pipeline {
 
         booleanParam(name: 'SKIP_TEST', description: 'Want to skip running Test cases?')
 
-        choice(name: 'BRANCH', choices: ['Master', 'Dev','main'], description: 'Choose branch')
+        choice(name: 'BRANCH', choices: ['Master', 'Dev'], description: 'Choose branch')
 
         password(name: 'SONAR_SERVER_PWD', description: 'Enter SONAR password')
     }
@@ -25,5 +25,21 @@ pipeline {
                 echo "SONAR Password: ${params.SONAR_SERVER_PWD}"
             }
         }
+
+    stage('BUILD') {
+            steps {
+                echo 'Developpement'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing'
+            }
+        }
+        stage('DEPLOY') {
+            steps {
+                echo 'Mise en Production'
+            }
+        }    
     }
 }
